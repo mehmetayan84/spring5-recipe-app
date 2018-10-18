@@ -148,14 +148,14 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
         guacomale.setNotes(guacamoleNotes);
 
-        guacomale.getIgredients().add(new Ingredient("ripe avocados", new BigDecimal(2), each, guacomale));
-        guacomale.getIgredients().add(new Ingredient("Kosher salt", new BigDecimal(".5"), teaspoon, guacomale));
-        guacomale.getIgredients().add(new Ingredient("fresh lime juice or lemon juice", new BigDecimal(2), tablespoon, guacomale));
-        guacomale.getIgredients().add(new Ingredient("minced red onion or thinly sliced green onion", new BigDecimal(2), tablespoon, guacomale));
-        guacomale.getIgredients().add(new Ingredient("serrano chiles, stems and seeds removed, minced", new BigDecimal(2), each, guacomale));
-        guacomale.getIgredients().add(new Ingredient("Cilantro", new BigDecimal(2), tablespoon, guacomale));
-        guacomale.getIgredients().add(new Ingredient("freshly grated black pepper", new BigDecimal(2), dash, guacomale));
-        guacomale.getIgredients().add(new Ingredient("ripe tomato, seeds and pulp removed, chopped", new BigDecimal(".5"), each, guacomale));
+        guacomale.getIngredients().add(new Ingredient("ripe avocados", new BigDecimal(2), each, guacomale));
+        guacomale.getIngredients().add(new Ingredient("Kosher salt", new BigDecimal(".5"), teaspoon, guacomale));
+        guacomale.getIngredients().add(new Ingredient("fresh lime juice or lemon juice", new BigDecimal(2), tablespoon, guacomale));
+        guacomale.getIngredients().add(new Ingredient("minced red onion or thinly sliced green onion", new BigDecimal(2), tablespoon, guacomale));
+        guacomale.getIngredients().add(new Ingredient("serrano chiles, stems and seeds removed, minced", new BigDecimal(2), each, guacomale));
+        guacomale.getIngredients().add(new Ingredient("Cilantro", new BigDecimal(2), tablespoon, guacomale));
+        guacomale.getIngredients().add(new Ingredient("freshly grated black pepper", new BigDecimal(2), dash, guacomale));
+        guacomale.getIngredients().add(new Ingredient("ripe tomato, seeds and pulp removed, chopped", new BigDecimal(".5"), each, guacomale));
 
         guacomale.getCategories().add(americanCategory);
         guacomale.getCategories().add(mexicanCategory);
