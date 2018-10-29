@@ -1,24 +1,30 @@
 package guru.springframework.spring5recipeapp.domain;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 public class Recipe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String description;
     private Integer prepTime;
     private Integer cookTime;
     private Integer servings;
     private String source;
     private String url;
+
     @Lob
     private String directions;
 
@@ -50,9 +56,9 @@ public class Recipe {
 
     public Recipe addIngredient(Ingredient ingredient) {
 
-        this.getIngredients().add(ingredient);
-
         ingredient.setRecipe(this);
+
+        this.getIngredients().add(ingredient);
 
         return this;
 

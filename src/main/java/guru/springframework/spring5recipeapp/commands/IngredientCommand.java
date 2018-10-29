@@ -15,6 +15,7 @@ import java.math.BigDecimal;
 public class IngredientCommand {
     private Long id;
     private String description;
+    private Long recipeId;
     private BigDecimal amount;
     private UnitOfMeasureCommand unitOfMeasure;
 
