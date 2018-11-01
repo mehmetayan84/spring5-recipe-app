@@ -3,6 +3,7 @@ package guru.springframework.spring5recipeapp.controllers;
 import guru.springframework.spring5recipeapp.commands.RecipeCommand;
 import guru.springframework.spring5recipeapp.services.IngredientService;
 import guru.springframework.spring5recipeapp.services.RecipeService;
+import guru.springframework.spring5recipeapp.services.UnitOfMeasureService;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -25,6 +26,9 @@ public class IngredientControllerTest {
     @Mock
     IngredientService ingredientService;
 
+    @Mock
+    UnitOfMeasureService unitOfMeasureService;
+
     IngredientController ingredientController;
 
     @Before
@@ -32,7 +36,7 @@ public class IngredientControllerTest {
 
         MockitoAnnotations.initMocks(this);
 
-        ingredientController = new IngredientController(recipeService, ingredientService);
+        ingredientController = new IngredientController(recipeService, ingredientService, unitOfMeasureService);
 
         mockMvc = MockMvcBuilders.standaloneSetup(ingredientController).build();
 

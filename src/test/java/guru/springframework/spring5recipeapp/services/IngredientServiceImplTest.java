@@ -1,7 +1,9 @@
 package guru.springframework.spring5recipeapp.services;
 
 import guru.springframework.spring5recipeapp.commands.IngredientCommand;
+import guru.springframework.spring5recipeapp.converters.IngredientCommandToIngredient;
 import guru.springframework.spring5recipeapp.converters.IngredientToIngredientCommand;
+import guru.springframework.spring5recipeapp.converters.UnitOfMeasureCommandToUnitOfMeasure;
 import guru.springframework.spring5recipeapp.converters.UnitOfMeasureToUnitOfMeasureCommand;
 import guru.springframework.spring5recipeapp.domain.Ingredient;
 import guru.springframework.spring5recipeapp.domain.Recipe;
@@ -22,6 +24,8 @@ public class IngredientServiceImplTest {
 
     private final IngredientToIngredientCommand ingredientToIngredientCommand;
 
+    private final IngredientCommandToIngredient ingredientCommandToIngredient;
+
     @Mock
     RecipeRepository recipeRepository;
 
@@ -30,13 +34,14 @@ public class IngredientServiceImplTest {
     //init converters
     public IngredientServiceImplTest() {
         this.ingredientToIngredientCommand = new IngredientToIngredientCommand(new UnitOfMeasureToUnitOfMeasureCommand());
+        this.ingredientCommandToIngredient = new IngredientCommandToIngredient(new UnitOfMeasureCommandToUnitOfMeasure());
     }
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        ingredientService = new IngredientServiceImpl(ingredientToIngredientCommand, recipeRepository);
+        ingredientService = new IngredientServiceImpl(ingredientToIngredientCommand, recipeRepository, ingredientCommandToIngredient);
     }
 
     @Test
