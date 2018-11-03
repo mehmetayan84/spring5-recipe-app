@@ -101,7 +101,7 @@
                                 <div class="col-md-12">
                                     <ul>
                                         <li th:each="ingredient: ${recipe.ingredients}" th:text="${ingredient.amount} +
-                                        ' ' +${ingredient.unitOfMeasure.uom} + ' ' +
+                                        ' ' +${ingredient.unitOfMeasure.description} + ' ' +
                                         ${ingredient.description}">1 Cup of Milk</li>
                                     </ul>
                                 </div>
@@ -136,6 +136,5 @@
             </div>
         </div>
     </div>
-
 </body>
 </html>
