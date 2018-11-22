@@ -1,7 +1,7 @@
 package guru.springframework.spring5recipeapp.controllers;
 
 import guru.springframework.spring5recipeapp.commands.RecipeCommand;
-import guru.springframework.spring5recipeapp.domain.Recipe;
+import guru.springframework.spring5recipeapp.exceptions.NotFoundException;
 import guru.springframework.spring5recipeapp.services.RecipeService;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,16 +37,29 @@ public class RecipeControllerTest {
     @Test
     public void showById() throws Exception {
 
-        Recipe recipe = new Recipe();
+        RecipeCommand recipe = new RecipeCommand();
 
         recipe.setId(1L);
 
-        when(recipeService.findById(anyLong())).thenReturn(recipe);
+        when(recipeService.findCommandById(anyLong())).thenReturn(recipe);
 
         mockMVC.perform(get("/recipe/1/show"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("recipe/show"))
                 .andExpect(model().attributeExists("recipe"));
+    }
+
+    @Test
+    public void testGetRecipeNotFound() throws Exception {
+
+        RecipeCommand recipeCommand = new RecipeCommand();
+
+        recipeCommand.setId(1L);
+
+        when(recipeService.findCommandById(anyLong())).thenThrow(new NotFoundException());
+
+        mockMVC.perform(get("/recipe/3/show"))
+                .andExpect(status().isNotFound());
     }
 
     @Test
@@ -104,4 +117,5 @@ public class RecipeControllerTest {
         verify(recipeService, times(1)).deleteById(anyLong());
 
     }
+
 }
