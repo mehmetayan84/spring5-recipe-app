@@ -118,4 +118,23 @@ public class RecipeControllerTest {
 
     }
 
+    @Test
+    public void handleNotFound() throws Exception {
+
+        when(recipeService.findCommandById(anyLong())).thenThrow(NotFoundException.class);
+
+        mockMVC.perform(get("/recipe/1/show"))
+                .andExpect(status().isNotFound())
+                .andExpect(view().name("404error"));
+
+    }
+
+    @Test
+    public void handleNumberFormat() throws Exception {
+
+        mockMVC.perform(get("/recipe/asd/show"))
+                .andExpect(status().isBadRequest())
+                .andExpect(view().name("400error"));
+
+    }
 }
