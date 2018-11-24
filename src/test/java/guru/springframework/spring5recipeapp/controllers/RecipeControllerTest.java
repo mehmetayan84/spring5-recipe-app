@@ -31,7 +31,9 @@ public class RecipeControllerTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         recipeController = new RecipeController(recipeService);
-        mockMVC = MockMvcBuilders.standaloneSetup(recipeController).build();
+        mockMVC = MockMvcBuilders.standaloneSetup(recipeController)
+                                .setControllerAdvice(new ControllerExceptionHandler())
+                                .build();
     }
 
     @Test
@@ -87,7 +89,8 @@ public class RecipeControllerTest {
         mockMVC.perform(post("/recipe/")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .param("id", "")
-                .param("description", "some string"))
+                .param("description", "some string")
+                .param("directions", "some direction"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/recipe/2/show"));
     }
